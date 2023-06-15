@@ -248,29 +248,43 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-/*let isArrayOf1
+let isArrayOf1
 let isArrayOf2
+
 const checkNumbersInNestedArray = function (number){
   if(number !== 1){
-    console.log()
+    isArrayOf1 = false;
+    return
+  }
+  else if(number !== 2){
+    isArrayOf2 = false;
+    return
   }
 }
 
+
+
 const checkNumbers = function (arrayOfNumbers){
-  arrayOfNumbers.forEach()
-}*/
+  arrayOfNumbers.forEach(checkNumbersInNestedArray)
+}
 
 function greatestProduct(matrix) {
-  matrix.forEach()
+isArrayOf1 = true;
+isArrayOf2 = true;
+  matrix.forEach(checkNumbers)
   if (isArrayOf1) {
     return 1
   }
-  else if (isArrayOf2) {
+  else if (isArrayOf2) { 
+    console.log("blabla")
+    console.log("16")
     return 16
   }
 }
 
+let table2 = [[2, 2, 2, 2, 2, 2],[2, 2, 2, 2, 2, 2],[2, 2, 2, 2, 2, 2]]
 
+greatestProduct(table2)
 
 
 // The following is required to make unit tests work.
