@@ -12,11 +12,10 @@ function maxOfTwoNumbers(num1, num2) {
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
-let longestWord = "";
+let longestWord;
 
 
 const wordCharCounter = function (currentWord) {
-
   if (currentWord.length > longestWord.length) {
     longestWord = currentWord
   }
@@ -39,7 +38,7 @@ function findLongestWord(arrayOfWords) {
 
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
-let currentSumOfNumbers = 0
+let currentSumOfNumbers
 
 const addingCurrentNumber = function (currentNumber) {
   if (currentNumber === 0) {
@@ -251,36 +250,63 @@ const matrix = [
 let isArrayOf1
 let isArrayOf2
 
-const checkNumbersInNestedArray = function (number){
-  if(number !== 1){
+const checkNumbersInNestedArray = function (number) {
+  if (number !== 1) {
     isArrayOf1 = false;
     return
   }
-  else if(number !== 2){
+  else if (number !== 2) {
     isArrayOf2 = false;
     return
   }
 }
 
-
-
-const checkNumbers = function (arrayOfNumbers){
+const checkNumbers = function (arrayOfNumbers) {
   arrayOfNumbers.forEach(checkNumbersInNestedArray)
 }
 
+let greatestProductOf4 = 0
+let bestCombination
+
 function greatestProduct(matrix) {
-isArrayOf1 = true;
-isArrayOf2 = true;
+  isArrayOf1 = true;
+  isArrayOf2 = true;
   matrix.forEach(checkNumbers)
   if (isArrayOf1) {
     return 1
   }
-  else if (isArrayOf2) { 
-    console.log("blabla")
-    console.log("16")
+  else if (isArrayOf2) {
     return 16
+  } else {
+    findBestCombination(matrix)
   }
+  
 }
+
+
+function findBestCombination(arrayOfElements) {
+  for (let i = 0; i < arrayOfElements.length; i++){
+    let currentIndex = arrayOfElements[i]
+    for (let y = 0; y < currentIndex.length; y ++ ){
+      let currentProduct = currentIndex[y] * currentIndex[y + 1] * currentIndex[y + 2] * currentIndex[y + 3]
+      if(currentProduct > greatestProductOf4){
+        greatestProductOf4 = currentProduct;
+        bestCombination = [currentIndex[y], currentIndex[y + 1], currentIndex[y + 2], currentIndex[y + 3]]
+      }
+    }
+    for(let j = 0; j < arrayOfElements; j ++){
+      let currentProduct = arrayOfElements[j][i] * arrayOfElements[j + 1][i] * arrayOfElements[j + 2][i] * arrayOfElements[j + 3][i]
+      if(currentProduct > greatestProductOf4){
+        greatestProductOf4 = currentProduct;
+        bestCombination = [arrayOfElements[j][i], arrayOfElements[j + 1][i], arrayOfElements[j + 2][i], arrayOfElements[j + 3][i]]
+      }
+    }
+  }
+  console.log(`The greatest product is ${greatestProductOf4} with this combination ${bestCombination}.`)
+  return `The greatest product is ${greatestProductOf4} with this combination ${bestCombination}.`
+}
+
+greatestProduct(matrix)
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
